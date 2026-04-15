@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios de RRHH</title>
+</head>
+<body>
+    <h1>Formulario de Solicitud de Empleo</h1>
+    <form action="/procesar-solicitud" method="post">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required><br><br>
+
+        <label for="puesto">Puesto Solicitado:</label>
+        <input type="text" id="puesto" name="puesto" required><br><br>
+
+        <input type="submit" value="Enviar Solicitud">
+    </form>
+
+    <h1>Formulario de Evaluación de Desempeño</h1>
+    <form action="/procesar-evaluacion" method="post">
+        <table>
+            <tr>
+                <td><label for="empleado">Empleado:</label></td>
+                <td><input type="text" id="empleado" name="empleado" required></td>
+            </tr>
+            <tr>
+                <td><label for="departamento">Departamento:</label></td>
+                <td><input type="text" id="departamento" name="departamento" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="calificacion">Calificación General:</label>
+                    <input type="number" id="calificacion" name="calificacion" min="1" max="10" step="0.1">
+                </td>
+                <td>
+                    <label for="fecha-evaluacion">Fecha de Evaluación:</label>
+                    <input type="date" id="fecha-evaluacion" name="fecha-evaluacion">
+                </td>
+            </tr>
+
+            <!--Tipos Numéricos Avanzados-->
+            <tr>
+                <td colspan="2">
+                    <label for="desempeno">Nivel de Desempeño:<span id="val-desempeno">5</span>/10</label>
+                    <input type="range" id="desempeno" name="desempeno" min="1" max="10" value="5"
+                    oninput="document.getElementById('val-desempeno').textContent = this.value">
+                </td>
+
+                <td>
+                   <label for="fecha-ingreso">Fecha de Ingreso:</label>
+                    <input type="date" id="fecha-ingreso" name="fecha-ingreso">
+                </td>
+
+                <td>
+                   <label for="hora-reunión">Hora de Reunión:</label>
+                    <input type="time" id="hora-reunión" name="hora-reunión">
+                </td>
+
+                <td>
+                   <label for="inicio-proyecto">Inicio del Proyecto:</label>
+                    <input type="date" id="inicio-proyecto" name="inicio-proyecto">
+                </td>
+
+                <td>
+                   <label for="periodo-rev">Período de Revisión:</label>
+                    <input type="month" id="periodo-rev" name="periodo-rev">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="observaciones">Observaciones:</label><br>
+                    <textarea id="observaciones" name="observaciones" rows="4" cols="50"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="promocion">
+                    <label for="promocion">Recomendado para promoción</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Guardar Evaluación">
+                    <input type="reset" value="Limpiar Formulario">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
