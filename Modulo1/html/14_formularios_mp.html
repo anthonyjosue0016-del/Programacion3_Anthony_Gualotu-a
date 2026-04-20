@@ -3,99 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularios de RRHH</title>
+    <title>Formularios RRHH - Registro de Empleados</title>
 </head>
 <body>
-    <h1>Formulario de Solicitud de Empleo</h1>
-    <form action="/procesar-solicitud" method="post">
-        <label for="nombre">Nombre Completo:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+    <h1>Formularios de Recursos Humanos</h1>
+    <form>
+        <label for="nombre">Nombre del Empleado:</label>
+        <input type="text" id="nombre" name="nombre" ><br><br>
 
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <label for="email">Correo Corporativo:</label>
+        <input type="email" id="email" name="email"><br><br>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required><br><br>
+        <label for="password">Contraseña de Acceso:</label>
+        <input type="password" id="password" name="password" ><br><br>
 
-        <label for="puesto">Puesto Solicitado:</label>
-        <input type="text" id="puesto" name="puesto" required><br><br>
-
-        <input type="submit" value="Enviar Solicitud">
+        <input type="submit" value="Registrar Empleado">
     </form>
 
-    <h1>Formulario de Evaluación de Desempeño</h1>
-    <form action="/procesar-evaluacion" method="post">
+    <h1>Formulario de Registro Completo</h1>
+    <form>
         <table>
             <tr>
-                <td><label for="empleado">Empleado:</label></td>
-                <td><input type="text" id="empleado" name="empleado" required></td>
+                <td><label for="nombre">Nombre Completo:</label></td>
+                <td><input type="text" id="nombre" name="nombre"></td>
             </tr>
             <tr>
-                <td><label for="departamento">Departamento:</label></td>
-                <td><input type="text" id="departamento" name="departamento" required></td>
+                <td><label for="email">Correo Electrónico:</label></td>
+                <td><input type="email" id="email" name="email" ></td>
             </tr>
             <tr>
                 <td>
-                    <label for="calificacion">Calificación General:</label>
-                    <input type="number" id="calificacion" name="calificacion" min="1" max="10" step="0.1">
+                    <label for="password">Contraseña:</label>
                 </td>
                 <td>
-                    <label for="fecha-evaluacion">Fecha de Evaluación:</label>
-                    <input type="date" id="fecha-evaluacion" name="fecha-evaluacion">
+                    <input type="password" id="password" name="password">
                 </td>
             </tr>
-
-            <!--Tipos Numéricos Avanzados-->
             <tr>
-                <td colspan="2">
-                    <label for="desempeno">Nivel de Desempeño:<span id="val-desempeno">5</span>/10</label>
-                    <input type="range" id="desempeno" name="desempeno" min="1" max="10" value="5"
-                    oninput="document.getElementById('val-desempeno').textContent = this.value">
+                <td><label for="url">Sitio Web Personal:</label></td>
+                <td><input type="url" id="url" name="url">
                 </td>
-
-                <td>
-                   <label for="fecha-ingreso">Fecha de Ingreso:</label>
-                    <input type="date" id="fecha-ingreso" name="fecha-ingreso">
-                </td>
-
-                <td>
-                   <label for="hora-reunión">Hora de Reunión:</label>
-                    <input type="time" id="hora-reunión" name="hora-reunión">
-                </td>
-
-                <td>
-                   <label for="inicio-proyecto">Inicio del Proyecto:</label>
-                    <input type="date" id="inicio-proyecto" name="inicio-proyecto">
-                </td>
-
-                <td>
-                   <label for="periodo-rev">Período de Revisión:</label>
-                    <input type="month" id="periodo-rev" name="periodo-rev">
+            </tr>
+            <tr>
+                <td><label for="buscar">Buscar Empleado:</label></td>
+                <td><input type="text" id="buscar" name="buscar">
                 </td>
             </tr>
 
+            <!--Tipos Numéricos-->
             <tr>
                 <td colspan="2">
-                    <label for="observaciones">Observaciones:</label><br>
-                    <textarea id="observaciones" name="observaciones" rows="4" cols="50"></textarea>
+                    <h3>Datos Numéricos</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" min="18" max="65" step="1">
+                </td>
+                <td>
+                    <label for="experiencia">Años de Experiencia:<span id="val-exp">5</span></label>
+                    <input type="range" id="experiencia" name="experiencia" min="0" max="40" value="5" oninput="document.getElementById('val-exp').textContent = this.value">
                 </td>
             </tr>
 
+            <!-- Tipos de Fecha y Hora-->
             <tr>
                 <td colspan="2">
-                    <input type="checkbox" id="promocion">
-                    <label for="promocion">Recomendado para promoción</label>
+                    <h3>Fechas Importantes</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   <label for="fecha">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha" name="fecha">
+                </td>
+                <td>
+                   <label for="hora">Hora de Entrada:</label>
+                    <input type="time" id="hora" name="hora">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   <label for="contrato">Fecha de Contrato:</label>
+                    <input type="date" id="contrato" name="contrato">
+                </td>
+                <td>
+                   <label for="mes">Mes de Evaluación:</label>
+                    <input type="month" id="mes" name="mes">
                 </td>
             </tr>
 
+            <!-- Checkbox y Radio -->
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Guardar Evaluación">
-                    <input type="reset" value="Limpiar Formulario">
+                    <h3>Información Adicional</h3>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="departamento">Departamento:</label><br>
+                    <input type="radio" id="rrhh" name="departamento" value="rrhh">
+                    <label for="rrhh">Recursos Humanos</label><br>
+                    <input type="radio" id="finanzas" name="departamento" value="finanzas">
+                    <label for="finanzas">Finanzas</label><br>
+                    <input type="radio" id="it" name="departamento" value="it">
+                    <label for="it">Tecnologías de Información</label><br>
+                    <input type="radio" id="ventas" name="departamento" value="ventas">
+                    <label for="ventas">Ventas</label><br><br>
 
+                    <input type="checkbox" id="capacitacion" name="capacitacion" value="capacitacion">
+                    <label for="capacitacion">Requiere capacitación inicial</label><br>
+                    <input type="checkbox" id="seguro" name="seguro" value="seguro">
+                    <label for="seguro">Incluir seguro médico</label><br>
+                    <input type="checkbox" id="transporte" name="transporte" value="transporte">
+                    <label for="transporte">Bono de transporte</label><br><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Guardar Registro">
+                </td>
+            </tr>
         </table>
     </form>
+
 </body>
 </html>
