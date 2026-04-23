@@ -1,0 +1,122 @@
+/* ================================================
+   MÓDULO 5: MEDIDAS - RRHH (Mi Proyecto)
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+.empleado-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.empleado-card {
+  font-size: 16px;
+}
+
+.empleado-datos {
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+
+:root {
+  --color-rrhh: #1565c0;
+  --color-success: #2e7d32;
+  --color-warning: #f57c00;
+  --color-danger: #c62828;
+}
+
+/* HEADER del sistema RRHH */
+.header-rrhh {
+  background: #1565c0;
+  color: white;
+  padding: 1rem;
+}
+
+/* Menú de navegación de empleados */
+#toggle-menu {
+  display: none;
+}
+
+.btn-menu {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.menu-empleados {
+  display: none;
+  background: #1976d2;
+  padding: 1rem;
+}
+
+#toggle-menu:checked ~ .menu-empleados {
+  display: block;
+}
+
+/* BOTONES */
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Botones específicos RRHH */
+.btn-primary-rrhh {
+  background-color: #1565c0;
+  color: white;
+}
+
+.btn-success-rrhh {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.btn-warning-rrhh {
+  background-color: #f57c00;
+  color: white;
+}
+
+/* Caja ejemplo de empleado */
+.caja-empleado {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* Imagen de perfil de empleado */
+.foto-perfil {
+  background-image: url("https://via.placeholder.com/150x150");
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 1rem;
+  position: relative;
+}
+
+/* Overlay para información */
+.info-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: rgba(21, 101, 192, 0.7);
+}
+
+/* Hero del sistema: ocupa toda la pantalla */
+.hero-rrhh {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Panel de estadísticas de RRHH */
+.panel-estadisticas {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.tarjeta-estadistica {
+  width: 25%;
+  min-width: 200px;
+}
