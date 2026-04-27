@@ -1,0 +1,200 @@
+/* ================================================
+   MÓDULO 10: FLEXBOX ALIGN-ITEMS - RRHH
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+h2 {
+  color: #1a365d;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+}
+
+/* Contenedor general con altura fija */
+.contenedor-rrhh {
+  display: flex;
+  height: 180px;
+  background: #e2e8f0;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #cbd5e0;
+  padding: 10px;
+}
+
+/* Items de ejemplo con diferentes tamaños */
+.empleado-item {
+  background: #3182ce;
+  color: white;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Diferentes tamaños para ver el efecto */
+.empleado-item:nth-child(1) { 
+  font-size: 0.8rem; 
+  padding: 10px;
+}
+.empleado-item:nth-child(2) { 
+  font-size: 1.2rem; 
+  padding: 20px;
+}
+.empleado-item:nth-child(3) { 
+  font-size: 1.5rem; 
+  padding: 30px;
+}
+
+/* Clases de alineación align-items */
+
+/* stretch: estira los elementos (defecto) */
+.align-stretch {
+  align-items: stretch;
+}
+
+/* flex-start: alineado arriba */
+.align-inicio {
+  align-items: flex-start;
+}
+
+/* flex-end: alineado abajo */
+.align-fin {
+  align-items: flex-end;
+}
+
+/* center: centrado verticalmente */
+.align-centro {
+  align-items: center;
+}
+
+/* baseline: alineado por la línea base */
+.align-baseline {
+  align-items: baseline;
+}
+
+/* === Ejemplos específicos de RRHH === */
+
+/* Panel de empleados: elementos alineados al centro */
+.panel-empleados {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  gap: 15px;
+}
+
+.foto-empleado {
+  width: 60px;
+  height: 60px;
+  background-color: #cbd5e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a5568;
+  font-weight: bold;
+}
+
+.info-empleado {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-empleado h4 {
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+.info-empleado p {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* Barra de estado: alineado al centro vertical */
+.barra-estado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  background-color: #1a365d;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+
+.barra-estado .titulo {
+  color: #fff;
+  font-weight: bold;
+}
+
+.barra-estado .indicadores {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.indicador {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.punto-activo { background-color: #48bb78; }
+.punto-inactivo { background-color: #f56565; }
+.punto-pendiente { background-color: #ecc94b; }
+
+/* Lista de documentos: alineados al inicio */
+.lista-documentos {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.documento {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f7fafc;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.icono-doc {
+  width: 30px;
+  height: 30px;
+  background-color: #ed8936;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.7rem;
+}
