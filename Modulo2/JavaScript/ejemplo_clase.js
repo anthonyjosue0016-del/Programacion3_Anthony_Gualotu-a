@@ -77,7 +77,7 @@ if (dia_semana >=1 && dia_semana <=5){
     console.log("Dia Laboral")
 }else if(dia_semana ==6 || dia_semana ==7){
     console.log("Fin de Semana")
-}*/
+}
 
 const total =prompt("Total de la Compra: ");
 const total_compra = parseInt(total, 10);
@@ -107,3 +107,24 @@ if(edad_total <18){
     console.log("Adulto");
 }
 
+
+
+const espar = n => n % 2===0;
+
+console.log(espar(3));
+
+
+const base = prompt("Ingresa la base del triángulo: ");
+const altura = prompt("Ingresa la altura del triángulo: ");
+const area = (base, altura) => (base * altura) / 2;
+const area_triangulo = area(parseInt(base, 10), parseInt(altura, 10));
+console.log(`El área del triángulo es: ${area_triangulo}`);
+*/
+
+function registrar(persona, ...mensajes) {
+  for (const msg of mensajes) {
+    console.log(`[${persona}] ${msg}`);
+  }
+}
+
+registrar("INFO", "Anthony", "Gualotuña", "21 años", "Ecuador");
