@@ -119,7 +119,7 @@ const altura = prompt("Ingresa la altura del triángulo: ");
 const area = (base, altura) => (base * altura) / 2;
 const area_triangulo = area(parseInt(base, 10), parseInt(altura, 10));
 console.log(`El área del triángulo es: ${area_triangulo}`);
-*/
+
 
 function registrar(persona, ...mensajes) {
   for (const msg of mensajes) {
@@ -128,3 +128,8 @@ function registrar(persona, ...mensajes) {
 }
 
 registrar("INFO", "Anthony", "Gualotuña", "21 años", "Ecuador");
+
+const celsius = [0, 15, -5, 22, 37, 100, -10, 28];
+const fahrenheit = celsius.map(c => (c * 9/5) + 32);
+
+console.log(fahrenheit);*/
