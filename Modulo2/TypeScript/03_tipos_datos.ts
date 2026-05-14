@@ -11,7 +11,7 @@ console.log(`La cadena vacía tiene longitud: ${vacia.length}`);
 // Métodos de string funcionan igual que en JS
 console.log(nombre.toUpperCase());      // ANA GARCÍA
 console.log(nombre.toLowerCase());      // ana garcía
-console.log(nombre.includes("García")); // true
+console.log(nombre.indexOf("García") !== -1); // true
 console.log(nombre.split(" "));         // ["Ana", "García"]
 
 
@@ -106,6 +106,7 @@ function duplicar(n: number): number {
   return n * 2;
 }
 
-const resultado = duplicar(5);
-console.log(resultado); // 10
+const resultadoDuplicado = duplicar(5);
+console.log(resultadoDuplicado); // 10
 
+export {};

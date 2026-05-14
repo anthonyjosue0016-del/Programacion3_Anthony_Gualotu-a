@@ -7,3 +7,5 @@ const activo: boolean = true;
 const nombre2 = "Ana";   // TypeScript sabe que es string
 const edad2   = 28;      // TypeScript sabe que es number
 const activo2 = true;    // TypeScript sabe que es boolean
+
+export {};

@@ -11,7 +11,7 @@ console.log(`La cadena vacía tiene longitud: ${vacia.length}`);
 // Métodos de string funcionan igual que en JS
 console.log(nombre.toUpperCase());      // ANA GARCÍA
 console.log(nombre.toLowerCase());      // ana garcía
-console.log(nombre.includes("García")); // true
+console.log(nombre.indexOf("García") !== -1); // true
 console.log(nombre.split(" "));         // ["Ana", "García"]
 
 
@@ -98,3 +98,5 @@ function saludar(nombre: string): void {
   console.log(`Hola, ${nombre}!`);
   // No hay return — esta función solo hace algo, no devuelve nada
 }
+
+export {};
