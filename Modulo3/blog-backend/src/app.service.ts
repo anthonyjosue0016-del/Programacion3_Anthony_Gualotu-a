@@ -49,4 +49,32 @@ export class AppService {
     return this.products!
         .find(product => product.id === Number(id))!;
   }
+
+  update(id : string, updatedProductDto: ProductDto): ProductDto | null {
+    const product = this.products!
+        .find(product => product.id === Number(id));
+    if (!product) {
+      return null;
+    }
+    Object.assign(product, updatedProductDto);
+    return product;
+  }
+
+  deleteById(id: string): ProductDto | null {
+    const index = this.products.findIndex(product => product.id === Number(id));
+    if (index === -1) {
+      return null;
+    }
+    const [deletedProduct] = this.products.splice(index, 1);
+    return deletedProduct;
+  }
+
+  areaTriangulo(data: any): any {
+    const area = data.base * data.altura / 2;
+    return {
+      "base": data.base,
+      "altura": data.altura,
+      "areaTriangulo": area,
+    };
+  }
 }
