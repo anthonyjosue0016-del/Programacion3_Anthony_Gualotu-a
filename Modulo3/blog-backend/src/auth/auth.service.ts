@@ -12,28 +12,27 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async login(loginDto: LoginDto) {
-    const user = await this.usersService.findByEmail(loginDto.email);
-    if (!user || !user.password || !(await bcrypt.compare(loginDto.password, user.password))) {
-      throw new UnauthorizedException('Credenciales inválidas');
+  async login(loginDto: LoginDto): Promise<string | null> {
+    try {
+      const user = await this.usersService.findByUsername(loginDto.username);
+      if (!user) return null;
+
+      const isValid = await bcrypt.compare(loginDto.password, user.password);
+      if (!isValid) return null;
+
+      const payload = { id: user.id, username: user.username };
+      return this.jwtService.sign(payload);
+    } catch (err) {
+      console.error('Unexpected login error:', err);
+      return null;
     }
-    const payload = { id: user.id, email: user.email };
-    return { access_token: this.jwtService.sign(payload) };
   }
 
-  async register(createUserDto: CreateUserDto) {
-    // prevent duplicate username/email
-    const existingByEmail = await this.usersService.findByEmail(createUserDto.email);
-    if (existingByEmail) {
-      throw new ConflictException('Email already in use');
-    }
-    const existingByUsername = await this.usersService.findByUsername(createUserDto.username);
-    if (existingByUsername) {
-      throw new ConflictException('Username already in use');
-    }
-
+  async register(createUserDto: CreateUserDto): Promise<string | null> {
     const user = await this.usersService.create(createUserDto);
-    const payload = { id: user.id, email: user.email };
-    return { access_token: this.jwtService.sign(payload) };
+    if (!user) return null;
+
+    const payload = { id: user.id, username: user.username };
+    return this.jwtService.sign(payload);
   }
 }

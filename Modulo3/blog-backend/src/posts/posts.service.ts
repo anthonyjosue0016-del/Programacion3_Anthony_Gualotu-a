@@ -1,3 +1,4 @@
+import { paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -5,6 +6,7 @@ import { Post } from './post.entity';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Category } from '../categories/category.entity';
+import { QueryDto } from 'src/common/dto/query.dto';
 
 @Injectable()
 export class PostsService {
@@ -28,8 +30,53 @@ export class PostsService {
     return this.postRepository.save(post);
   }
 
-  findAll() {
-    return this.postRepository.find({ relations: ['category'] });
+  async findAll(queryDto: QueryDto): Promise<Pagination<Post> | null> {
+    try {
+      const { page, limit, search, searchField, sort, order } = queryDto;
+      const query = this.postRepository.createQueryBuilder('post');
+      query.leftJoinAndSelect('post.category', 'category');
+
+      if (search) {
+        if (searchField) {
+          switch (searchField) {
+            case 'title':
+              query.where('post.title ILIKE :search', {
+                search: `%${search}%`,
+              });
+              break;
+            case 'content':
+              query.where('post.content ILIKE :search', {
+                search: `%${search}%`,
+              });
+              break;
+            case 'category':
+              query.where('category.name ILIKE :search', {
+                search: `%${search}%`,
+              });
+              break;
+            default:
+              query.where(
+                '(post.title ILIKE :search OR post.content ILIKE :search OR category.name ILIKE :search)',
+                { search: `%${search}%` },
+              );
+          }
+        } else {
+          query.where(
+            '(post.title ILIKE :search OR post.content ILIKE :search OR category.name ILIKE :search)',
+            { search: `%${search}%` },
+          );
+        }
+      }
+
+      if (sort) {
+        query.orderBy(`post.${sort}`, (order ?? 'ASC') as 'ASC' | 'DESC');
+      }
+
+      return await paginate<Post>(query, { page, limit });
+    } catch (err) {
+      console.error('Error retrieving posts:', err);
+      return null;
+    }
   }
 
   findOne(id: string) {
