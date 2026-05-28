@@ -27,7 +27,7 @@ import { QueryDto } from 'src/common/dto/query.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -83,11 +83,13 @@ export class UsersController {
   }
 
   @Put(':id/profile')
-  @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('profile', {
     storage: diskStorage({
       destination: './public/profile',
-      filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
+      filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}-${file.originalname}`;
+        cb(null, uniqueName);
+      }
     }),
     fileFilter: (req, file, cb) => {
       if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
@@ -96,10 +98,12 @@ export class UsersController {
       cb(null, true);
     }
   }))
-  async uploadProfile(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
+  async uploadProfile(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     if (!file) throw new BadRequestException('Profile image is required');
     const user = await this.usersService.updateProfile(id, file.filename);
-    if (!user) throw new NotFoundException('User not found');
     return new SuccessResponseDto('Profile image updated', user);
   }
 }
