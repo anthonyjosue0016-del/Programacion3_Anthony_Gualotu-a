@@ -1,0 +1,81 @@
+/* ================================================
+   MÓDULO 6: TIPOGRAFÍA - RRHH (Mi Proyecto)
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tipografía para datos de empleados */
+.dato-empleado {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Títulos del sistema RRHH */
+.titulos-rrhh {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  color: #1565c0;
+}
+
+/* Textos de información general */
+.info-general {
+  font-family: 'Arial', sans-serif;
+  color: #424242;
+}
+
+/* Pesos de fuente para jerarquía de información */
+.nombre-empleado {
+  font-weight: 700;
+}
+
+.cargo-empleado {
+  font-weight: 600;
+}
+
+.departamento {
+  font-weight: 400;
+}
+
+.nota-informativa {
+  font-weight: 300;
+  color: #757575;
+}
+
+/* Estilos para información tachada (datos antiguos) */
+.dato-anterior {
+  font-style: italic;
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Texto destacado para información importante */
+.info-destacada {
+  font-weight: 600;
+  color: #1565c0;
+}
+
+/* Texto de alerta */
+.alerta {
+  color: #c62828;
+  font-weight: 500;
+}
+
+/* Texto de éxito */
+.exito {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+/* Información de contacto */
+.contacto-empleado {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Descripción de puesto */
+.descripcion-puesto {
+  font-size: 1rem;
+  line-height: 1.6;
+}

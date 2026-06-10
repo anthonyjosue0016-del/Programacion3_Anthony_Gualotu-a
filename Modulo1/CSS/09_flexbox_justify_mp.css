@@ -1,0 +1,177 @@
+/* ================================================
+   MÓDULO 9: FLEXBOX JUSTIFY-CONTENT - RRHH
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+h2 {
+  color: #1a365d;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+}
+
+/* Contenedor general */
+.contenedor-rrhh {
+  display: flex;
+  background: #e2e8f0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #cbd5e0;
+}
+
+/* Items de ejemplo */
+.empleado-item {
+  background: #3182ce;
+  color: white;
+  padding: 20px;
+  margin: 5px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 120px;
+}
+
+/* Clases de alineación justify-content */
+
+/* flex-start: alineado al inicio (izquierda) */
+.justify-inicio {
+  justify-content: flex-start;
+}
+
+/* flex-end: alineado al final (derecha) */
+.justify-fin {
+  justify-content: flex-end;
+}
+
+/* center: centrado */
+.justify-centro {
+  justify-content: center;
+}
+
+/* space-between: espacio igual entre elementos */
+.justify-between {
+  justify-content: space-between;
+}
+
+/* space-around: espacio alrededor de cada elemento */
+.justify-around {
+  justify-content: space-around;
+}
+
+/* space-evenly: espacio uniforme */
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* === Ejemplos específicos de RRHH === */
+
+/* Barra de navegación: espacio entre elementos */
+.navbar-rrhh {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1a365d;
+  padding: 15px 30px;
+  border-radius: 8px;
+}
+
+.navbar-rrhh .logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-rrhh .menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar-rrhh .menu a {
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-rrhh .menu a:hover {
+  color: #63b3ed;
+}
+
+/* Grupo de botones de acción: centrados */
+.botones-accion {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.btn-rrhh {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-rrhh:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn-success {
+  background-color: #38a169;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #e53e3e;
+  color: white;
+}
+
+/* Tarjetas de departamento: espacio uniforme */
+.departamentos-grid {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.departamento-card {
+  background-color: #ebf8ff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 150px;
+  border: 1px solid #bee3f8;
+}
+
+.departamento-card h4 {
+  color: #2c5282;
+  margin-bottom: 10px;
+}
+
+.departamento-card p {
+  color: #4a5568;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Justify-Content - RRHH</title>
+  <link rel="stylesheet" href="09_flexbox_justify_mp.css">
+</head>
+<body>
+
+  <h1>Ejemplos de justify-content - RRHH</h1>
+  <p style="color: #4a5568; margin-bottom: 30px;">Alineación horizontal en el sistema de RRHH</p>
+
+  <h2>flex-start (inicio)</h2>
+  <div class="contenedor-rrhh justify-inicio">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <h2>flex-end (fin)</h2>
+  <div class="contenedor-rrhh justify-fin">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <h2>center (centro)</h2>
+  <div class="contenedor-rrhh justify-centro">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <h2>space-between</h2>
+  <div class="contenedor-rrhh justify-between">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <h2>space-around</h2>
+  <div class="contenedor-rrhh justify-around">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <h2>space-evenly</h2>
+  <div class="contenedor-rrhh justify-evenly">
+    <div class="empleado-item">Emp. 1</div>
+    <div class="empleado-item">Emp. 2</div>
+    <div class="empleado-item">Emp. 3</div>
+  </div>
+
+  <hr>
+
+  <h2>Navbar: space-between</h2>
+  <nav class="navbar-rrhh">
+    <div class="logo">🏢 RRHH System</div>
+    <ul class="menu">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Empleados</a></li>
+      <li><a href="#">Departamentos</a></li>
+      <li><a href="#">Informes</a></li>
+    </ul>
+  </nav>
+
+  <hr>
+
+  <h2>Botones de acción: center</h2>
+  <div class="botones-accion">
+    <button class="btn-rrhh btn-primary">➕ Nuevo Empleado</button>
+    <button class="btn-rrhh btn-success">✓ Confirmar</button>
+    <button class="btn-rrhh btn-danger">✕ Cancelar</button>
+  </div>
+
+  <hr>
+
+  <h2>Departamentos: space-evenly</h2>
+  <div class="departamentos-grid">
+    <div class="departamento-card">
+      <h4>📁 Recursos Humanos</h4>
+      <p>12 empleados</p>
+    </div>
+    <div class="departamento-card">
+      <h4>💻 Tecnología</h4>
+      <p>25 empleados</p>
+    </div>
+    <div class="departamento-card">
+      <h4>📊 Contabilidad</h4>
+      <p>8 empleados</p>
+    </div>
+    <div class="departamento-card">
+      <h4>🎯 Marketing</h4>
+      <p>15 empleados</p>
+    </div>
+  </div>
+
+</body>
+</html>

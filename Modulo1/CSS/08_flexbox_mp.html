@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox - RRHH</title>
+  <link rel="stylesheet" href="08_flexbox_mp.css">
+</head>
+<body>
+  <h1 style="color: #1a365d">FLEXBOX - RECURSOS HUMANOS</h1>
+  <p style="color: #4a5568; margin-bottom: 30px;">Sistema de Control de Recursos Humanos</p>
+
+  <!-- Ejemplo 1: Contenedor en fila -->
+  <h2>Contenedor en fila (row)</h2>
+  <div class="empleados-contenedor">
+    <div class="empleado-card">
+      <div class="avatar">JD</div>
+      <h4>Juan Díaz</h4>
+      <p>Desarrollador</p>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">MP</div>
+      <h4>María Pérez</h4>
+      <p>Diseñadora</p>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">LG</div>
+      <h4>Luis García</h4>
+      <p>Analista</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Ejemplo 2: Dirección invertida -->
+  <h2>Dirección invertida (column-reverse)</h2>
+  <div class="empleados-contenedor empleados-inverso">
+    <div class="empleado-card" style="background-color: #ebf8ff;">
+      <h4>Primero (abajo)</h4>
+    </div>
+    <div class="empleado-card" style="background-color: #c3dafe;">
+      <h4>Segundo</h4>
+    </div>
+    <div class="empleado-card" style="background-color: #e9d8fd;">
+      <h4>Tercero (arriba)</h4>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Ejemplo 3: Navbar -->
+  <h2>Navbar con Flexbox</h2>
+  <nav class="navbar-rrhh">
+    <a href="#">🏠 Inicio</a>
+    <a href="#">👥 Empleados</a>
+    <a href="#">📊 Informes</a>
+    <a href="#">⚙️ Configuración</a>
+  </nav>
+
+  <hr>
+
+  <!-- Ejemplo 4: Tarjeta en columna -->
+  <h2>Tarjeta de empleado (column)</h2>
+  <div class="empleado-card" style="max-width: 300px;">
+    <div class="avatar" style="width: 80px; height: 80px; background-color: #3182ce; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">AR</div>
+    <h4 style="text-align: center; margin-top: 15px;">Ana Rodríguez</h4>
+    <p style="text-align: center; color: #3182ce; font-weight: bold;">Gerente de RRHH</p>
+    <p style="text-align: center; font-size: 0.85rem; color: #718096;">ana.rodriguez@empresa.com</p>
+    <button style="margin-top: 10px; padding: 8px 16px; background-color: #38a169; color: white; border: none; border-radius: 6px; cursor: pointer;">Ver perfil</button>
+  </div>
+
+</body>
+</html>

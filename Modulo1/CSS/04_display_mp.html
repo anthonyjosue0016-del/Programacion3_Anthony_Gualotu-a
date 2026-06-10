@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display - RRHH</title>
+    <link rel="stylesheet" href="04_display_mp.css">
+</head>
+<body>
+    <h1 style="color: #1565c0">DISPLAY - RECURSOS HUMANOS</h1>
+    
+    <div class="banner-rrhh">
+        🎉 Sistema de Control de Recursos Humanos - RRHH v1.0
+    </div>
+    <br>
+    
+    <h2>Estados de Empleados</h2>
+    <span class="etiqueta-activo">Activo</span>
+    <span class="etiqueta-inactivo">Inactivo</span>
+    <br><br>
+    
+    <button class="btn-registrar">+ Registrar Nuevo Empleado</button>
+    <br><br>
+    
+    <h2>Menú de Empleados</h2>
+    <button onclick="toggleMenu()">☰ Menú</button>
+    <div class="menu-empleados-movil" id="menu">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Empleados</a></li>
+            <li><a href="#">Departamentos</a></li>
+            <li><a href="#">Nómina</a></li>
+            <li><a href="#">Informes</a></li>
+        </ul>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('activo');
+        }
+    </script>
+    
+    <h2>Grid de Empleados</h2>
+    <div class="empleados-grid">
+        <div class="empleado-card">
+            <h3>Ana López</h3>
+            <p>Departamento: Contabilidad</p>
+        </div>
+        <div class="empleado-card">
+            <h3>Pedro Martínez</h3>
+            <p>Departamento: Ventas</p>
+        </div>
+        <div class="empleado-card">
+            <h3>Sofia Rodríguez</h3>
+            <p>Departamento: Marketing</p>
+        </div>
+    </div>
+
+</body>
+</html>
