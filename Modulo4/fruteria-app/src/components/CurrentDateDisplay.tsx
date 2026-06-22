@@ -1,24 +1,31 @@
-// src/components/CurrentDateDisplay.tsx
+interface CurrentDateDisplayProps {
+  showTime?: boolean
+}
 
-export default function CurrentDateDisplay() {
+export default function CurrentDateDisplay({ showTime = true }: CurrentDateDisplayProps) {
   const now = new Date()
 
-  const fecha = now.toLocaleDateString('es-ES', {
-    weekday: 'long',
+  const fecha = now.toLocaleDateString('en-US', {
+    weekday: 'short',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'America/Mexico_City',
   })
 
-  const hora = now.toLocaleTimeString('es-ES', {
+  const hora = now.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
+    second: '2-digit',
+    timeZone: 'America/Mexico_City',
   })
 
   return (
     <div style={{ fontSize: 14, color: '#555' }}>
       <span style={{ textTransform: 'capitalize' }}>{fecha}</span>
-      <span style={{ marginLeft: 12, color: '#999' }}>{hora}</span>
+      {showTime && (
+        <span style={{ marginLeft: 12, color: '#999' }}>{hora}</span>
+      )}
     </div>
   )
 }
