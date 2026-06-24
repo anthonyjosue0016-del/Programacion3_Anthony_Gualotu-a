@@ -29,7 +29,7 @@ import UserProfileCard     from './components/UserProfileCard'
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 1 
+const PASO = 6 ;
 
 const fruits = [
   { name: 'Manzana', emoji: '🍎', calories: 52, inSeason: true },
