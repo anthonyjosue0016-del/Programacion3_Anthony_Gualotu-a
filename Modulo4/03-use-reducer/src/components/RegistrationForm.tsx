@@ -53,9 +53,11 @@ export default function RegistrationForm() {
 
   function validate(): boolean {
     const errors: FormState['errors'] = {}
-    if (!state.name.trim())         errors.name     = 'El nombre es requerido'
-    if (!state.email.includes('@')) errors.email    = 'Email inválido'
-    if (state.password.length < 6)  errors.password = 'Mínimo 6 caracteres'
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!state.name.trim()) errors.name = 'El nombre es requerido'
+    if (!emailRegex.test(state.email.trim())) errors.email = 'Email inválido'
+    if (state.password.length < 6) errors.password = 'Mínimo 6 caracteres'
 
     if (Object.keys(errors).length > 0) {
       dispatch({ type: 'SET_ERRORS', errors })
@@ -67,6 +69,11 @@ export default function RegistrationForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!validate()) return
+
+    if (state.email.toLowerCase().endsWith('@fail.com')) {
+      dispatch({ type: 'SUBMIT_ERROR' })
+      return
+    }
 
     dispatch({ type: 'SUBMIT_START' })
     // Simulación de llamada a API
@@ -84,6 +91,12 @@ export default function RegistrationForm() {
       {state.status === 'success' && (
         <div style={{ padding: 12, background: '#dcfce7', borderRadius: 6, color: '#166534' }}>
           ✅ Registro exitoso
+        </div>
+      )}
+
+      {state.status === 'error' && (
+        <div style={{ padding: 12, background: '#fee2e2', borderRadius: 6, color: '#991b1b' }}>
+          ⚠️ Ocurrió un error al enviar el formulario
         </div>
       )}
 

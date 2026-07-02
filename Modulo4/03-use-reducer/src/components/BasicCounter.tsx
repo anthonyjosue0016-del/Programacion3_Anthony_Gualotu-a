@@ -7,6 +7,7 @@ type CounterAction =
   | { type: 'DECREMENT' }
   | { type: 'RESET' }
   | { type: 'SET'; payload: number }
+  | { type: 'DOUBLE' }
 
 interface CounterState {
   count: number
@@ -18,9 +19,10 @@ function counterReducer(
 ): CounterState {
   switch (action.type) {
     case 'INCREMENT': return { count: state.count + 1 }
-    case 'DECREMENT': return { count: state.count - 1 }
-    case 'RESET':     return { count: 0 }
+    case 'DECREMENT': return { count: Math.max(0, state.count - 1) }
+    case 'RESET':     return INITIAL_STATE
     case 'SET':       return { count: action.payload }
+    case 'DOUBLE':    return { count: state.count * 2 }
   }
 }
 
@@ -49,10 +51,16 @@ export default function BasicCounter() {
         </button>
       </div>
       <button
-        onClick={() => dispatch({ type: 'SET', payload: 100 })}
+        onClick={() => dispatch({ type: 'SET', payload: 42 })}
         style={{ ...btnStyle, fontSize: 12 }}
       >
         Poner en 100
+      </button>
+      <button
+        onClick={() => dispatch({ type: 'DOUBLE' })}
+        style={{ ...btnStyle, fontSize: 12 }}
+      >
+        Doble
       </button>
       <button
         onClick={() => dispatch({ type: 'RESET' })}

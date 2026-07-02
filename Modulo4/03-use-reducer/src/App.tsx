@@ -2,15 +2,14 @@
 
 import BasicCounter     from './components/BasicCounter'
 import RegistrationForm from './components/RegistrationForm'
-/*import ShoppingCart     from './components/ShoppingCart'
-*/
+import ShoppingCart     from './components/ShoppingCart'
 // ┌──────────────────────────────────────────────────────────────────────┐
 // │  Cambia PASO y guarda (Ctrl+S) para navegar entre componentes.       │
 // │  1  BasicCounter      — useReducer básico con acciones tipadas       │
 // │  2  RegistrationForm  — formulario con validación y estados de envío │
 // │  3  ShoppingCart      — carrito de compras completo                  │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 2
+const PASO: number = 3
 
 export default function App() {
   const content =
