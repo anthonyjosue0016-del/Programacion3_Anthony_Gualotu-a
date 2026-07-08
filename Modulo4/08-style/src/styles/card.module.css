@@ -26,3 +26,13 @@
 .btn:hover {
   filter: brightness(1.1);   /* :hover sí funciona en CSS Modules */
 }
+
+.highlight {
+  background: yellow;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 8px;
+  }
+}

@@ -1,7 +1,14 @@
 // src/App.tsx
 
+import { ThemeProvider }    from './theme/ThemeContext'
 import CssGlobalDemo        from './components/CssGlobalDemo'
-//import './theme/theme.css'
+import InlineStyleDemo      from './components/InlineStyleDemo'
+import CssModuleDemo        from './styles/CssModuleDemo'
+import StyledComponentsDemo from './components/StyledComponentsDemo'
+import LiveStyleEditor      from './components/LiveStyleEditor'
+import HoverDemo            from './components/HoverDemo'
+import ThemePanel           from './components/ThemePanel'
+import './theme/theme.css'
 
 // ┌──────────────────────────────────────────────────────────────────────┐
 // │  Cambia PASO y guarda (Ctrl+S) para navegar entre componentes.      │
@@ -13,12 +20,17 @@ import CssGlobalDemo        from './components/CssGlobalDemo'
 // │  6  HoverDemo            — hook useHover para efectos hover         │
 // │  7  ThemePanel           — Context + CSS variables para theming     │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 1
+const PASO = 7
 
 export default function App() {
   const content =
     PASO === 1 ? <CssGlobalDemo /> :
-    
+    PASO === 2 ? <InlineStyleDemo /> :
+    PASO === 3 ? <CssModuleDemo /> :
+    PASO === 4 ? <StyledComponentsDemo /> :
+    PASO === 5 ? <LiveStyleEditor /> :
+    PASO === 6 ? <HoverDemo /> :
+    PASO === 7 ? <ThemePanel /> :
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
 
   return (

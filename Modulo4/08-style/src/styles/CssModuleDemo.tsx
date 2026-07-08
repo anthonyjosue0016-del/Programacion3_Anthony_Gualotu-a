@@ -6,7 +6,7 @@ export default function CssModuleDemo() {
   return (
     <div className={styles.card}>
       <h3 className={styles.title}>CSS Modules</h3>
-      <p style={{ margin: '0 0 12px', color: 'var(--muted)' }}>
+      <p className={styles.highlight} style={{ margin: '0 0 12px', color: 'var(--muted)' }}>
         Cada clase recibe un nombre único generado en build time.
         Elimina colisiones sin necesitar BEM ni prefijos manuales.
       </p>
