@@ -1,19 +1,20 @@
 // src/router/AppRouter.tsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import PublicLayout from '@/layouts/PublicLayout'
 import DashboardLayout from '@/layouts/DashboardLayout'
 import NotFoundPage from '@/pages/NotFoundPage'
+import ProtectedRoute from './ProtectedRoute'
 import { publicRoutes } from './publicRoutes'
 import { privateRoutes } from './privateRoutes'
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<PublicLayout />}>{publicRoutes}</Route>
+    <Routes>
+      <Route element={<PublicLayout />}>{publicRoutes}</Route>
+      <Route element={<ProtectedRoute />}>
         <Route element={<DashboardLayout />}>{privateRoutes}</Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   )
 }
