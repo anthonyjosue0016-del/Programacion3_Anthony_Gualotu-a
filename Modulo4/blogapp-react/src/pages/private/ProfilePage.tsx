@@ -1,11 +1,12 @@
-// src/pages/private/ProfilePage.tsx
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useAuthStore } from '@/store/auth.store'
 import { getUser, updateUser, uploadProfileImage } from '@/api/users.api'
-import { profileImageUrl } from '@/lib/urls'
+import { unlinkGoogle } from '@/api/auth.api'
+import { googleAuthUrl, avatarSrc } from '@/lib/urls'
+import { useToastStore } from '@/store/toast.store'
 import { avatarColor } from '@/lib/avatar-color'
 import { cn } from '@/lib/utils'
 import type { User } from '@/types/user.types'
@@ -22,7 +23,10 @@ type FormValues = z.infer<typeof schema>
 
 export default function ProfilePage() {
   const userId = useAuthStore((s) => s.userId)
+  const token = useAuthStore((s) => s.token)
   const [user, setUser] = useState<User | null>(null)
+  const [unlinking, setUnlinking] = useState(false)
+  const showToast = useToastStore((s) => s.show)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } =
@@ -36,6 +40,7 @@ export default function ProfilePage() {
     if (!userId) return
     const updated = await updateUser(userId, values)
     setUser(updated)
+    showToast('Perfil actualizado correctamente', 'success')
   }
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +48,19 @@ export default function ProfilePage() {
     if (!file || !userId) return
     const updated = await uploadProfileImage(userId, file)
     setUser(updated)
+    showToast('Foto de perfil actualizada', 'success')
+  }
+
+  const handleUnlinkGoogle = async () => {
+    if (!userId) return
+    setUnlinking(true)
+    try {
+      const updated = await unlinkGoogle()
+      setUser(updated)
+      showToast('Cuenta de Google desvinculada', 'success')
+    } finally {
+      setUnlinking(false)
+    }
   }
 
   if (!user) return <div className="p-8 text-muted-foreground">Cargando...</div>
@@ -52,7 +70,7 @@ export default function ProfilePage() {
       <h1 className="text-xl font-semibold">Mi perfil</h1>
       <div className="flex flex-col items-center gap-3">
         <Avatar className="h-24 w-24">
-          <AvatarImage src={profileImageUrl(user.profile)} />
+          <AvatarImage src={avatarSrc(user)} />
           <AvatarFallback className={cn(avatarColor(user.username), 'text-2xl text-white')}>
             {user.username.slice(0, 2).toUpperCase()}
           </AvatarFallback>
@@ -61,6 +79,23 @@ export default function ProfilePage() {
         <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()}>
           Cambiar foto
         </Button>
+      </div>
+      <div className="space-y-2 rounded-md border p-4">
+        <h2 className="text-sm font-semibold">Cuenta de Google</h2>
+        {user.googleId ? (
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Vinculada</span>
+            <Button variant="outline" size="sm" disabled={unlinking} onClick={handleUnlinkGoogle}>
+              {unlinking ? 'Desvinculando...' : 'Desvincular'}
+            </Button>
+          </div>
+        ) : (
+          <a href={googleAuthUrl(token ?? undefined)}>
+            <Button variant="outline" size="sm" className="w-full">
+              Vincular con Google
+            </Button>
+          </a>
+        )}
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <div>

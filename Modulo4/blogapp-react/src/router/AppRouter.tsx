@@ -1,8 +1,7 @@
-// src/router/AppRouter.tsx
 import { Routes, Route } from 'react-router-dom'
 import PublicLayout from '@/layouts/PublicLayout'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import NotFoundPage from '@/pages/NotFoundPage'
+import NotFoundPage from '@/pages/private/NotFoundPage'
 import ProtectedRoute from './ProtectedRoute'
 import { publicRoutes } from './publicRoutes'
 import { privateRoutes } from './privateRoutes'

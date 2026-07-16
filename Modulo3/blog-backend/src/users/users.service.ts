@@ -110,9 +110,43 @@ export class UsersService {
   }
 
   async updateProfile(id: string, profile: string) {
-    const user = await this.userRepository.findOne({ where: { id: id } });
+    const user = await this.userRepository.findOne({ where: { id } });
     if (!user) throw new NotFoundException('User not found');
     user.profile = profile;
+    user.avatarUrl = `/public/profile/${profile}`;
+    return this.userRepository.save(user);
+  }
+
+  async unlinkGoogle(id: string) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user) return null;
+    user.googleId = null;
+    return this.userRepository.save(user);
+  }
+
+  async findByGoogleId(googleId: string) {
+    return this.userRepository.findOne({ where: { googleId } });
+  }
+
+  async updateGoogleAccount(id: string, googleId: string, avatarUrl?: string) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user) return null;
+    user.googleId = googleId;
+    if (avatarUrl) {
+      user.avatarUrl = avatarUrl;
+    }
+    return this.userRepository.save(user);
+  }
+
+  async createGoogleUser(email: string, username: string, googleId: string, avatarUrl?: string) {
+    const hashedPassword = await bcrypt.hash(Math.random().toString(36).slice(-10), 10);
+    const user = this.userRepository.create({
+      username,
+      email,
+      password: hashedPassword,
+      googleId,
+      avatarUrl,
+    });
     return this.userRepository.save(user);
   }
 }

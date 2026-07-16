@@ -1,4 +1,3 @@
-// src/api/courses.api.ts
 import { http } from './http'
 import type { ApiResponse } from '@/types/common.types'
 import type { Curso, CreateCoursePayload } from '@/types/course.types'

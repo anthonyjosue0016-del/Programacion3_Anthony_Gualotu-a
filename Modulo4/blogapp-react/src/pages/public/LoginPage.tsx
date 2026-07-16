@@ -1,10 +1,10 @@
-// src/pages/public/LoginPage.tsx
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useNavigate } from 'react-router-dom'
 import { login as loginApi } from '@/api/auth.api'
 import { useAuthStore } from '@/store/auth.store'
+import { googleAuthUrl } from '@/lib/urls'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -18,6 +18,7 @@ type FormValues = z.infer<typeof schema>
 export default function LoginPage() {
   const navigate = useNavigate()
   const setToken = useAuthStore((s) => s.setToken)
+  const token = useAuthStore((s) => s.token)
   const { register: field, handleSubmit, formState: { errors, isSubmitting } } =
     useForm<FormValues>({ resolver: zodResolver(schema) })
 
@@ -45,6 +46,20 @@ export default function LoginPage() {
           {isSubmitting ? 'Ingresando...' : 'Ingresar'}
         </Button>
       </form>
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">o</span>
+        </div>
+      </div>
+      <a
+        href={googleAuthUrl(token ?? undefined)}
+        className="flex w-full items-center justify-center rounded-md border py-2 text-sm font-medium hover:bg-accent"
+      >
+        Continuar con Google
+      </a>
     </div>
   )
 }

@@ -59,6 +59,7 @@ export class UsersController {
     return new SuccessResponseDto('Users retrieved successfully', result);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const user = await this.usersService.findOne(id);
@@ -82,6 +83,7 @@ export class UsersController {
     return new SuccessResponseDto('User deleted successfully', id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id/profile')
   @UseInterceptors(FileInterceptor('profile', {
     storage: diskStorage({

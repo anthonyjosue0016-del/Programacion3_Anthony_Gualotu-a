@@ -19,4 +19,10 @@ export class User {
 
   @Column({ nullable: true })
   profile?: string;
+
+  @Column({ nullable: true })
+  googleId?: string | null;
+
+  @Column({ nullable: true })
+  avatarUrl?: string | null;
 }
