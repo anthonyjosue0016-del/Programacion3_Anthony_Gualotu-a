@@ -18,10 +18,8 @@ export class CursosService {
       const curso = new this.cursoModel(cursoData);
 
       if (contenidos && contenidos.length > 0) {
-        const contenidosIds: Types.ObjectId[] = [];
-
-        for (const contenido of contenidos) {
-          const contenidoData = {
+        const contenidoEntities = await this.contenidoModel.create(
+          contenidos.map((contenido) => ({
             titulo: contenido.titulo,
             duracion: contenido.duracion,
             descripcion: contenido.descripcion,
@@ -29,21 +27,13 @@ export class CursosService {
             enlace: contenido.enlace,
             dificultad: contenido.dificultad,
             fecha_publicacion: contenido.fecha_publicacion,
-            completado: contenido.completado,
+            completado: contenido.completado ?? false,
             tiempo_estimado: contenido.tiempo_estimado,
             video_id: contenido.video_id,
-          };
+          })),
+        );
 
-          try {
-            const contenidoEntity = new this.contenidoModel(contenidoData);
-            contenidoEntity.save();
-            contenidosIds.push(contenidoEntity._id as Types.ObjectId);
-          } catch (error) {
-            console.error('Error al crear contenido:', error);
-          }
-        }
-
-        curso.contenidos = contenidosIds;
+        curso.contenidos = contenidoEntities.map((item) => item._id as Types.ObjectId);
       }
 
       const savedCurso = await curso.save();
@@ -86,9 +76,8 @@ export class CursosService {
       Object.assign(curso, dto);
 
       if (dto.contenidos) {
-        const contenidosIds: Types.ObjectId[] = [];
-        for (const contenido of dto.contenidos) {
-          const contenidoData = {
+        const contenidoEntities = await this.contenidoModel.create(
+          dto.contenidos.map((contenido) => ({
             titulo: contenido.titulo,
             duracion: contenido.duracion,
             descripcion: contenido.descripcion,
@@ -96,14 +85,12 @@ export class CursosService {
             enlace: contenido.enlace,
             dificultad: contenido.dificultad,
             fecha_publicacion: contenido.fecha_publicacion,
-            completado: contenido.completado,
+            completado: contenido.completado ?? false,
             tiempo_estimado: contenido.tiempo_estimado,
             video_id: contenido.video_id,
-          };
-          const contenidoEntity = await this.contenidoModel.create(contenidoData);
-          contenidosIds.push(contenidoEntity._id as Types.ObjectId);
-        }
-        curso.contenidos = contenidosIds;
+          })),
+        );
+        curso.contenidos = contenidoEntities.map((item) => item._id as Types.ObjectId);
       }
 
       return await curso.save();

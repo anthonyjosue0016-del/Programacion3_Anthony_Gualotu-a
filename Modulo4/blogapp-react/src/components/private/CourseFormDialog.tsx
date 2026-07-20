@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { createCourse, updateCourse } from '@/api/courses.api'
 import type { Curso } from '@/types/course.types'
+import { useToastStore } from '@/store/toast.store'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -35,6 +36,7 @@ interface Props {
 }
 
 export default function CourseFormDialog({ open, onOpenChange, course, onSaved }: Props) {
+  const showToast = useToastStore((s) => s.show)
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } =
     useForm<FormValues>({ resolver: zodResolver(schema) })
 
@@ -70,8 +72,13 @@ export default function CourseFormDialog({ open, onOpenChange, course, onSaved }
       estado: values.estado,
       contenidos: [],
     }
-    if (course) await updateCourse(course._id, payload)
-    else await createCourse(payload)
+    if (course) {
+      await updateCourse(course._id, payload)
+      showToast('Curso actualizado', 'success')
+    } else {
+      await createCourse(payload)
+      showToast('Curso creado', 'success')
+    }
     onOpenChange(false)
     onSaved()
   }

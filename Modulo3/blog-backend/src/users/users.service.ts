@@ -1,5 +1,5 @@
 import { paginate, Pagination } from 'nestjs-typeorm-paginate';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -17,13 +17,23 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User | null> {
     try {
+      const existingEmail = await this.findByEmail(createUserDto.email);
+      const existingUsername = await this.findByUsername(createUserDto.username);
+      if (existingEmail || existingUsername) {
+        throw new ConflictException('Username or email already exists');
+      }
+
       const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
       const user = this.userRepository.create({
         ...createUserDto,
         password: hashedPassword,
+        roles: createUserDto.roles ?? ['user'],
       });
       return await this.userRepository.save(user);
     } catch (error) {
+      if (error instanceof ConflictException) {
+        throw error;
+      }
       console.error('Error creating user:', error);
       return null;
     }
@@ -91,12 +101,32 @@ export class UsersService {
     return this.userRepository.findOne({ where: { username } });
   }
 
+  async findByUsernameOrEmail(identifier: string) {
+    return this.userRepository.createQueryBuilder('user')
+      .where('user.username = :identifier OR user.email = :identifier', { identifier })
+      .getOne();
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.userRepository.findOne({ where: { id } });
     if (!user) return null;
 
     if (updateUserDto.password) {
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
+    }
+
+    if (updateUserDto.username && updateUserDto.username !== user.username) {
+      const existingUsername = await this.findByUsername(updateUserDto.username);
+      if (existingUsername) {
+        throw new ConflictException('Username already exists');
+      }
+    }
+
+    if (updateUserDto.email && updateUserDto.email !== user.email) {
+      const existingEmail = await this.findByEmail(updateUserDto.email);
+      if (existingEmail) {
+        throw new ConflictException('Email already exists');
+      }
     }
 
     Object.assign(user, updateUserDto);
@@ -146,6 +176,7 @@ export class UsersService {
       password: hashedPassword,
       googleId,
       avatarUrl,
+      roles: ['user'],
     });
     return this.userRepository.save(user);
   }

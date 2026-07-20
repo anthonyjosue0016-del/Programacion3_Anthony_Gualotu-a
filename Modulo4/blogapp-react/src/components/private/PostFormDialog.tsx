@@ -7,6 +7,7 @@ import { createPost, updatePost } from '@/api/posts.api'
 import { getCategories } from '@/api/categories.api'
 import type { Post } from '@/types/post.types'
 import type { Category } from '@/types/category.types'
+import { useToastStore } from '@/store/toast.store'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -30,6 +31,7 @@ interface Props {
 
 export default function PostFormDialog({ open, onOpenChange, post, onSaved }: Props) {
   const [categories, setCategories] = useState<Category[]>([])
+  const showToast = useToastStore((s) => s.show)
   const { register, control, handleSubmit, reset, formState: { errors, isSubmitting } } =
     useForm<FormValues>({ resolver: zodResolver(schema) })
 
@@ -44,8 +46,13 @@ export default function PostFormDialog({ open, onOpenChange, post, onSaved }: Pr
   }, [post, open, reset])
 
   const onSubmit = async (values: FormValues) => {
-    if (post) await updatePost(post.id, values)
-    else await createPost(values)
+    if (post) {
+      await updatePost(post.id, values)
+      showToast('Post actualizado', 'success')
+    } else {
+      await createPost(values)
+      showToast('Post creado', 'success')
+    }
     onOpenChange(false)
     onSaved()
   }

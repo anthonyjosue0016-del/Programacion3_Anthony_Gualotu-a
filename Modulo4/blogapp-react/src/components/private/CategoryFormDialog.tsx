@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { createCategory, updateCategory } from '@/api/categories.api'
 import type { Category } from '@/types/category.types'
+import { useToastStore } from '@/store/toast.store'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export default function CategoryFormDialog({ open, onOpenChange, category, onSaved }: Props) {
+  const showToast = useToastStore((s) => s.show)
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } =
     useForm<FormValues>({ resolver: zodResolver(schema) })
 
@@ -31,8 +33,13 @@ export default function CategoryFormDialog({ open, onOpenChange, category, onSav
   }, [category, open, reset])
 
   const onSubmit = async (values: FormValues) => {
-    if (category) await updateCategory(category.id, values)
-    else await createCategory(values)
+    if (category) {
+      await updateCategory(category.id, values)
+      showToast('Categoría actualizada', 'success')
+    } else {
+      await createCategory(values)
+      showToast('Categoría creada', 'success')
+    }
     onOpenChange(false)
     onSaved()
   }

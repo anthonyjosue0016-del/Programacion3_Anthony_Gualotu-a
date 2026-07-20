@@ -25,4 +25,7 @@ export class User {
 
   @Column({ nullable: true })
   avatarUrl?: string | null;
+
+  @Column({ type: 'simple-array', nullable: true, default: '' })
+  roles?: string[];
 }

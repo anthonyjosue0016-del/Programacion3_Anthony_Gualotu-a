@@ -19,13 +19,16 @@ export class PostsService {
   ) {}
 
   async create(createPostDto: CreatePostDto) {
-    const category = await this.categoryRepository.findOne({ where: { id: createPostDto.categoryId } });
-    if (!category) throw new NotFoundException('Categoría no encontrada');
+    let category: Category | null = null;
+    if (createPostDto.categoryId) {
+      category = await this.categoryRepository.findOne({ where: { id: createPostDto.categoryId } });
+      if (!category) throw new NotFoundException('Categoría no encontrada');
+    }
 
     const post = this.postRepository.create({
       title: createPostDto.title,
       content: createPostDto.content,
-      category,
+      category: category ?? undefined,
     });
     return this.postRepository.save(post);
   }

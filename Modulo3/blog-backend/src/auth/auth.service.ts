@@ -15,28 +15,54 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async login(loginDto: LoginDto): Promise<string | null> {
-    try {
-      const user = await this.usersService.findByUsername(loginDto.username);
-      if (!user || !user.password) return null;
-
-      const isValid = await bcrypt.compare(loginDto.password, user.password);
-      if (!isValid) return null;
-
-      const payload = { id: user.id, username: user.username };
-      return this.jwtService.sign(payload);
-    } catch (err) {
-      console.error('Unexpected login error:', err);
-      return null;
+  async login(loginDto: LoginDto): Promise<string> {
+    const user = await this.usersService.findByUsernameOrEmail(loginDto.username);
+    if (!user || !user.password) {
+      throw new UnauthorizedException('Invalid credentials');
     }
+
+    const isValid = await bcrypt.compare(loginDto.password, user.password);
+    if (!isValid) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    const payload = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      roles: user.roles ?? [],
+    };
+    return this.jwtService.sign(payload);
   }
 
-  async register(createUserDto: CreateUserDto): Promise<string | null> {
+  async register(createUserDto: CreateUserDto): Promise<string> {
     const user = await this.usersService.create(createUserDto);
-    if (!user) return null;
+    if (!user) {
+      throw new BadRequestException('Failed to register user');
+    }
 
-    const payload = { id: user.id, username: user.username };
+    const payload = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      roles: user.roles ?? [],
+    };
     return this.jwtService.sign(payload);
+  }
+
+  async refreshToken(token: string): Promise<string> {
+    try {
+      const payload = this.jwtService.verify(token);
+      const refreshedPayload = {
+        id: payload.id,
+        username: payload.username,
+        email: payload.email,
+        roles: payload.roles ?? [],
+      };
+      return this.jwtService.sign(refreshedPayload);
+    } catch (error) {
+      throw new UnauthorizedException('Invalid or expired token');
+    }
   }
 
   getGoogleAuthUrl(state: string): string {
@@ -91,7 +117,7 @@ export class AuthService {
     let user = await this.usersService.findByEmail(profile.email);
     const picture = typeof profile.picture === 'string' ? profile.picture : '';
     const googleId = profile.sub as string;
-    if (user) {
+    if (user && user.id) {
       await this.usersService.updateGoogleAccount(user.id, googleId, picture);
     } else {
       const baseUsername = profile.name
