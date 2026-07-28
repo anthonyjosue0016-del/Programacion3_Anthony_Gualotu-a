@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManipulaciÃ³n del DOM</title>
+    <script src="dom04-eventos_mp.js" defer></script>
+    <style>
+        .boton {
+            background-color: red;
+            padding: 0%.5em 1em;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Eventos del DOM</h1>
+    <h2 onclick="alert('Hello desde Inline')">Eventos Inline</h2>
+    <button class="boton" id="btn" onclick="mostrarAlerta()">Presionar</button>
+
+    <button class="boton" id="btn2" onclick="agregarEmpleado()">Agregar Empleado</button>
+    <ul id="Lista-empleados1"></ul>
+
+    <button class="boton" id="btn3">Agregar Empleado desde Listener</button>
+    <ul id="Lista-empleados2"></ul>
+    
+    <p id="parrafo" onclick="cambiarTexto()">Este es un pÃ¡rrafo</p>
+
+    <button class="buton" id="btn-titulo" onclick="textocambiado()">Cambiar titulo</button>
+    <h2 id="titulo2">"Titulo Ejemplo"</h2>
+
+</body>
+
+</html>
