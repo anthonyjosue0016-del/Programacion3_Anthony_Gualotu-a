@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Align-Items - RRHH</title>
+  <link rel="stylesheet" href="10_flexbox_align_mp.css">
+</head>
+<body>
+
+  <h1>Ejemplos de align-items - RRHH</h1>
+  <p style="color: #4a5568; margin-bottom: 30px;">Alineación vertical en el sistema de RRHH</p>
+
+  <h2>stretch (default)</h2>
+  <div class="contenedor-rrhh align-stretch">
+    <div class="empleado-item">1</div>
+    <div class="empleado-item">2</div>
+    <div class="empleado-item">3</div>
+  </div>
+
+  <h2>flex-start (arriba)</h2>
+  <div class="contenedor-rrhh align-inicio">
+    <div class="empleado-item">1</div>
+    <div class="empleado-item">2</div>
+    <div class="empleado-item">3</div>
+  </div>
+
+  <h2>flex-end (abajo)</h2>
+  <div class="contenedor-rrhh align-fin">
+    <div class="empleado-item">1</div>
+    <div class="empleado-item">2</div>
+    <div class="empleado-item">3</div>
+  </div>
+
+  <h2>center (centrado)</h2>
+  <div class="contenedor-rrhh align-centro">
+    <div class="empleado-item">1</div>
+    <div class="empleado-item">2</div>
+    <div class="empleado-item">3</div>
+  </div>
+
+  <h2>baseline</h2>
+  <div class="contenedor-rrhh align-baseline">
+    <div class="empleado-item">Texto 1</div>
+    <div class="empleado-item">Texto 2</div>
+    <div class="empleado-item">Texto 3</div>
+  </div>
+
+  <hr>
+
+  <h2>Panel de empleados: align-items center</h2>
+  <div class="panel-empleados">
+    <div class="foto-empleado">JD</div>
+    <div class="info-empleado">
+      <h4>Juan Díaz</h4>
+      <p>Desarrollador Senior</p>
+    </div>
+    <div class="foto-empleado">MP</div>
+    <div class="info-empleado">
+      <h4>María Pérez</h4>
+      <p>Diseñadora UI/UX</p>
+    </div>
+    <div class="foto-empleado">LG</div>
+    <div class="info-empleado">
+      <h4>Luis García</h4>
+      <p>Analista de Datos</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Barra de estado: align-items center</h2>
+  <div class="barra-estado">
+    <div class="titulo">📊 Panel de RRHH</div>
+    <div class="indicadores">
+      <div class="indicador">
+        <span class="punto punto-activo"></span>
+        <span>Activos: 45</span>
+      </div>
+      <div class="indicador">
+        <span class="punto punto-inactivo"></span>
+        <span>Inactivos: 3</span>
+      </div>
+      <div class="indicador">
+        <span class="punto punto-pendiente"></span>
+        <span>Pendientes: 7</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Lista de documentos: align-items flex-start</h2>
+  <div class="lista-documentos">
+    <div class="documento">
+      <div class="icono-doc">PDF</div>
+      <span>Contrato_Laboral_2024.pdf</span>
+    </div>
+    <div class="documento">
+      <div class="icono-doc">XLS</div>
+      <span>Nómina_Enero_2024.xlsx</span>
+    </div>
+    <div class="documento">
+      <div class="icono-doc">DOC</div>
+      <span>Política_Vacaciones.docx</span>
+    </div>
+    <div class="documento">
+      <div class="icono-doc">PDF</div>
+      <span>Certificado_Antigüedad.pdf</span>
+    </div>
+  </div>
+
+</body>
+</html>

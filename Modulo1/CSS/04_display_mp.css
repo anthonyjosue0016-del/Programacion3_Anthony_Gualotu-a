@@ -1,0 +1,79 @@
+/* ================================================
+   MÓDULO 4: DISPLAY - RRHH (Mi Proyecto)
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+/* Por defecto son block: div, p, h1-h6, section, article... */
+.banner-rrhh {
+  display: block;
+  width: 100%;
+  background-color: #1565c0;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Por defecto son inline: span, a, strong, em... */
+.etiqueta-activo {
+  display: inline;
+  background-color: #2e7d32;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.etiqueta-inactivo {
+  display: inline;
+  background-color: #c62828;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.btn-registrar {
+  display: inline-block;
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Menú móvil para panel de empleados */
+.menu-empleados-movil {
+  display: none;
+  background-color: #e3f2fd;
+  padding: 10px;
+}
+
+.menu-empleados-movil.activo {
+  display: block;
+}
+
+/* Grid de empleados */
+.empleados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Tabla de empleados - display table */
+.tabla-empleados {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fila-empleado {
+  display: table-row;
+}
+
+.celda-empleado {
+  display: table-cell;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}

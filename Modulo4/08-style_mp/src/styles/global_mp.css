@@ -1,0 +1,19 @@
+﻿/* src/styles/global_mp.css */
+
+.globalCard {
+  border:        1px solid var(--border);
+  border-radius: 0;
+  font-family:   monospace;
+  padding:       16px;
+}
+
+.title {
+  margin:      0 0 8px 0;
+  color:       var(--accent);
+  font-weight: 800;
+}
+
+.globalSubtitle {
+  color:      red;
+  font-size:  12px;
+}

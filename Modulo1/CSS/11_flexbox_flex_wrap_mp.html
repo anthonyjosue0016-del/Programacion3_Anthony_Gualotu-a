@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Flex-Wrap - RRHH</title>
+  <link rel="stylesheet" href="11_flexbox_flex_wrap_mp.css">
+</head>
+<body>
+
+  <h1>Ejemplos de flex-wrap - RRHH</h1>
+  <p style="color: #4a5568; margin-bottom: 30px;">Control de ajuste de elementos en el sistema de RRHH</p>
+
+  <h2>Navbar</h2>
+  <nav class="navbar-rrhh">
+    <a href="#">🏠 Inicio</a>
+    <a href="#">👥 Empleados</a>
+    <a href="#">🏢 Departamentos</a>
+    <a href="#">📋 Informes</a>
+    <a href="#">⚙️ Configuración</a>
+  </nav>
+
+  <hr>
+
+  <h2>Filtros de búsqueda</h2>
+  <div class="filtros-empleados">
+    <button class="active">Todos</button>
+    <button>Activos</button>
+    <button>Inactivos</button>
+    <button>Contrato indefinido</button>
+    <button>Contrato temporal</button>
+    <button>Becarios</button>
+  </div>
+
+  <hr>
+
+  <h2>Grid de empleados (flex-wrap + align-content)</h2>
+
+  <div class="empleados-grid content-start">
+    <div class="empleado-card">
+      <div class="avatar">JD</div>
+      <div class="nombre">Juan Díaz</div>
+      <div class="cargo">Desarrollador</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">MP</div>
+      <div class="nombre">María Pérez</div>
+      <div class="cargo">Diseñadora</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">LG</div>
+      <div class="nombre">Luis García</div>
+      <div class="cargo">Analista</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">AR</div>
+      <div class="nombre">Ana Rodríguez</div>
+      <div class="cargo">Gerente</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">CM</div>
+      <div class="nombre">Carlos Martínez</div>
+      <div class="cargo">Contador</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">SB</div>
+      <div class="nombre">Sofia Benítez</div>
+      <div class="cargo">Marketing</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">JR</div>
+      <div class="nombre">Jorge Ruiz</div>
+      <div class="cargo">Técnico</div>
+    </div>
+    <div class="empleado-card">
+      <div class="avatar">LC</div>
+      <div class="nombre">Laura Castro</div>
+      <div class="cargo">RRHH</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Departamentos (flex-wrap)</h2>
+  <div class="departamentos-wrap">
+    <div class="departamento-item">
+      <div class="icono">💼</div>
+      <h4>Recursos Humanos</h4>
+      <span class="cantidad">12 empleados</span>
+    </div>
+    <div class="departamento-item">
+      <div class="icono">💻</div>
+      <h4>Tecnología</h4>
+      <span class="cantidad">25 empleados</span>
+    </div>
+    <div class="departamento-item">
+      <div class="icono">📊</div>
+      <h4>Contabilidad</h4>
+      <span class="cantidad">8 empleados</span>
+    </div>
+    <div class="departamento-item">
+      <div class="icono">🎯</div>
+      <h4>Marketing</h4>
+      <span class="cantidad">15 empleados</span>
+    </div>
+    <div class="departamento-item">
+      <div class="icono">📦</div>
+      <h4>Logística</h4>
+      <span class="cantidad">18 empleados</span>
+    </div>
+    <div class="departamento-item">
+      <div class="icono">🤝</div>
+      <h4>Ventas</h4>
+      <span class="cantidad">22 empleados</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Documentos (flex-wrap)</h2>
+  <div class="documentos-lista">
+    <div class="doc-item">
+      <span class="tipo">PDF</span>
+      <span class="nombre">Contrato_Laboral.pdf</span>
+    </div>
+    <div class="doc-item">
+      <span class="tipo">XLS</span>
+      <span class="nombre">Nómina_Enero.xlsx</span>
+    </div>
+    <div class="doc-item">
+      <span class="tipo">DOC</span>
+      <span class="nombre">Política_Vacaciones.doc</span>
+    </div>
+    <div class="doc-item">
+      <span class="tipo">PDF</span>
+      <span class="nombre">Certificado_Antigüedad.pdf</span>
+    </div>
+    <div class="doc-item">
+      <span class="tipo">PDF</span>
+      <span class="nombre">Evaluación_Desempeño.pdf</span>
+    </div>
+    <div class="doc-item">
+      <span class="tipo">PPT</span>
+      <span class="nombre">Inducción_2024.pptx</span>
+    </div>
+  </div>
+
+</body>
+</html>

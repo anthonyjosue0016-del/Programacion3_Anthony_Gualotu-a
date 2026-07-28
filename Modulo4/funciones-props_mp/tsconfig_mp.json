@@ -1,0 +1,8 @@
+﻿{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app_mp.json" },
+    { "path": "./tsconfig.node_mp.json" }
+  ]
+}
+

@@ -1,0 +1,29 @@
+.producto1-card {
+  width: 280px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 16px;
+  background-color: #ffffff;
+}
+
+.item-card {
+  /* Un valor: los 4 lados */
+  padding: 20px;
+
+  /* Dos valores: vertical | horizontal */
+  padding: 10px 20px;
+
+  /* Tres valores: top | horizontal | bottom */
+  padding: 10px 20px 15px;
+
+  /* Cuatro valores: top | right | bottom | left */
+  padding: 10px 20px 15px 20px;
+  background-color: #d1e7ca;
+}
+
+.producto2-card {
+  width: 280px;
+  padding: 30px;
+  border: 1px solid #dc9a9a;
+}

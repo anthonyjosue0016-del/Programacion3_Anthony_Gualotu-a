@@ -1,0 +1,114 @@
+/* ================================================
+   MÓDULO 8: FLEXBOX - RRHH (Mi Proyecto)
+   Sistema de Control de Recursos Humanos
+   ================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+h2 {
+  color: #1a365d;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+}
+
+/* Contenedor principal de empleados */
+.empleados-contenedor {
+  display: flex; /* activa Flexbox */
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Dirección en columna para tarjetas de empleado */
+.empleados-tarjetas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Dirección invertida para historial */
+.empleados-inverso {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Navbar: items en fila */
+.navbar-rrhh {
+  display: flex;
+  flex-direction: row;
+  background-color: #1a365d;
+  padding: 15px 30px;
+  gap: 30px;
+}
+
+.navbar-rrhh a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-rrhh a:hover {
+  color: #63b3ed;
+}
+
+/* Tarjeta de empleado: información en columna */
+.empleado-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.empleado-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.empleado-card h4 {
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.empleado-card p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Panel de lista de empleados */
+.lista-empleados {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.empleado-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #f7fafc;
+  border-radius: 6px;
+  margin: 5px;
+}
